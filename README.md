@@ -64,8 +64,8 @@ What they ask: "How do you structure Terraform for a large organisation?"
 
 Key points to say:
 
-Modules are reusable building blocks — not environment-specific
-Each environment calls the same modules with different variable values
-Modules have their own variables.tf, outputs.tf, main.tf
-Never put environment-specific logic inside a module
+- Modules are reusable building blocks — not environment-specific
+- Each environment calls the same modules with different variable values
+- Modules have their own variables.tf, outputs.tf, main.tf
+- Never put environment-specific logic inside a module
 
