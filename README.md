@@ -59,21 +59,9 @@ Always use `azurerm_client_config` to avoid hardcoding sensitive IDs and to make
 What they ask: "How do you structure Terraform for a large organisation?"
 
 
-infra/
-├── modules/
-│   ├── networking/          # VNet/VPC, subnets, NSGs, peering
-│   ├── compute/             # VMs, ASGs, ECS, AKS/EKS
-│   ├── security/            # IAM roles, Key Vault, policies
-│   └── monitoring/          # Prometheus, dashboards, alerts
-├── environments/
-│   ├── dev/
-│   │   ├── main.tf          # calls modules
-│   │   ├── variables.tf
-│   │   ├── terraform.tfvars # dev-specific values
-│   │   └── backend.tf       # dev state config
-│   ├── staging/
-│   └── prod/
-└── global/                  # shared DNS, logging, org-level config
+<img width="560" height="390" alt="image" src="https://github.com/user-attachments/assets/fe83bdd7-ddc1-4513-8586-3cf2eea5a073" />
+
+
 Key points to say:
 
 Modules are reusable building blocks — not environment-specific
