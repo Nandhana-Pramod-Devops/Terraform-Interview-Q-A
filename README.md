@@ -55,4 +55,29 @@ Always use `azurerm_client_config` to avoid hardcoding sensitive IDs and to make
 3. Never commit secrets or state files to version control. Ensure your .gitignore excludes any files containing sensitive information and educate your team about the risks of exposing secrets in repositories
 4. Implement strict access controls. Restrict access to state files and secret management systems using the principle of least privilege. Only authorized users and systems should have access to sensitive data, and permissions should be reviewed regularly
 
+## 1. Module Structure
+What they ask: "How do you structure Terraform for a large organisation?"
+
+
+infra/
+├── modules/
+│   ├── networking/          # VNet/VPC, subnets, NSGs, peering
+│   ├── compute/             # VMs, ASGs, ECS, AKS/EKS
+│   ├── security/            # IAM roles, Key Vault, policies
+│   └── monitoring/          # Prometheus, dashboards, alerts
+├── environments/
+│   ├── dev/
+│   │   ├── main.tf          # calls modules
+│   │   ├── variables.tf
+│   │   ├── terraform.tfvars # dev-specific values
+│   │   └── backend.tf       # dev state config
+│   ├── staging/
+│   └── prod/
+└── global/                  # shared DNS, logging, org-level config
+Key points to say:
+
+Modules are reusable building blocks — not environment-specific
+Each environment calls the same modules with different variable values
+Modules have their own variables.tf, outputs.tf, main.tf
+Never put environment-specific logic inside a module
 
